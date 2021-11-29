@@ -9,6 +9,6 @@
 #include <sys/types.h>
 
 /* Prototypes */
-
+int subprocess(char *buffer[], char *string);
 
 #endif
