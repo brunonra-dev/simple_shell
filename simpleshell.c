@@ -12,14 +12,13 @@
 
 int main(void)
 {
-	int bytes_read;
+	int bytes_read, status, ex;
 	size_t size = 0;
 	char *string = NULL, *token;
 	const char *d = " ";
 	char *str[1024];
-	int i = 0, j = 0;
+	int i = 0;
 	pid_t child_pid;
-	int ex;
 
 	while (1)
 	{
@@ -28,48 +27,41 @@ int main(void)
 		if (bytes_read == -1)
 		{
 			perror("ERROR!");
-		}
-
-		token = strtok(string, d);
-
-		child_pid = fork();
-		if (child_pid == -1)
-		{
-			perror("Error:");
 			return (-1);
 		}
 
+		/* tokenizer */
+		token = strtok(string, d);
 		while (token)
 		{
-			printf("token = %s", token);
 			str[i] = token;
 			token = strtok(NULL, d);
 			i++;
 		}
-		printf("\n");
-		while (str[j])
-		{
-			printf("str = %s", str[j]);
-			j++;
-		}
-		printf("\n");
 
+		/* subprocess */
+		child_pid = fork();
+		if (child_pid == -1)
+		{
+			perror("ERROR!");
+			return (-1);
+		}
+
+		/* subprocess execve */
 		if (child_pid == 0)
 		{
-			ex = execve(str[0], str, NULL);
+			ex = execve(str[0], &string, NULL);
 			if (ex == -1)
 			{
-				perror("Error:");
+				perror("ERROR!");
+				return (-1);
 			}
-			printf("soy el hijo");
 		}
 		else
 		{
-			wait(&child_pid);
-			printf("I'm father");
+			wait(&status);
 		}
 	}
-	free(&ex);
 	free(string);
 	return (0);
 }
