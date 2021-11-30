@@ -6,13 +6,14 @@
  * Return: 0 on success
  */
 
-int main(void)
+int main(int argc, char *argv[], char *envp[])
 {
 	int bytes_read, i;
 	size_t size = 0;
 	char *string = NULL, *token;
 	const char *d = " \n";
 	char *buffer[1024];
+	(void)argc, (void)argv;
 
 	while (1)
 	{

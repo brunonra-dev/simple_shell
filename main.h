@@ -10,5 +10,6 @@
 
 /* Prototypes */
 int subprocess(char *buffer[], char *string);
+int main(int argc, char *argv[], char *envp[]);
 
 #endif
