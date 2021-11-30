@@ -18,8 +18,8 @@ int main(int ac, char **va, char **env)
 	const char *d = " \n";
 	(void)ac, (void)va;
 
-	if (findsubstring(env, "HOSTNAME"))
-		printf("path encontrado");
+	if (findsubstring(env, "PATH="))
+		printf("path encontrado\n");
 
 	while (1)
 	{

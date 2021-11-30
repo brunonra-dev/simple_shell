@@ -21,23 +21,25 @@ char *findsubstring(char **string, char *needle)
 
 	for (h = 0; string[h]; h++)
 	{
-	for (i = 0; string[h][i] != '\0'; i++)
-	{
-		if (string[h][i] == needle[0])
+		for (i = 0; string[h][i] != '\0'; i++)
 		{
-			for (j = 0; needle[j] != '\0'; j++)
+			count = 0;
+			if (string[h][i] == needle[0])
 			{
-				if (string[h][i + j] == needle[j])
-					count++;
-			}
-
-			if (count == n_len)
-			{
-				ret = &string[h][i];
-				break;
+				for (j = 0; needle[j] != '\0'; j++)
+				{
+					if (string[h][i + j] == needle[j])
+					{
+						count++;
+					}
+				}
+				if (count == n_len)
+				{
+					ret = &string[h][i];
+					break;
+				}
 			}
 		}
-	}
 	}
 	return (ret);
 }
