@@ -3,17 +3,23 @@
 /**
  * main - Shell.
  *
+ * @ac: agrument count
+ * @va: arguments
+ * @env: environment
+ *
  * Return: 0 on success
  */
 
-int main(int argc, char *argv[], char *envp[])
+int main(int ac, char **va, char **env)
 {
 	int bytes_read, i;
 	size_t size = 0;
-	char *string = NULL, *token;
+	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
-	char *buffer[1024];
-	(void)argc, (void)argv;
+	(void)ac, (void)va;
+
+	if (findsubstring(env, "HOSTNAME"))
+		printf("path encontrado");
 
 	while (1)
 	{
