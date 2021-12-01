@@ -16,11 +16,7 @@ int main(int ac, char **va, char **env)
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
-	char *path, *path2, *eenv = "env";
 	(void)ac, (void)va;
-
-	/*path = findsubstring(env, "PATH=");
-	path2 = *getpath(&path);*/
 
 	while (1)
 	{
@@ -31,10 +27,7 @@ int main(int ac, char **va, char **env)
 			perror("ERROR: getline");
 			return (-1);
 		}
-		if (*string == *eenv)
-		{
-			findsubstring(env, NULL);
-		}
+
 		/* tokenizer */
 		i = 0;
 		token = strtok(string, d);
@@ -46,7 +39,12 @@ int main(int ac, char **va, char **env)
 		}
 		buffer[i] = token;
 
-		subprocess(buffer, string);
+		if (!(_strcmp(buffer[0], "env")))
+			_printenv(env);
+		else if (subprocess(buffer, string))
+			continue;
+		else
+			perror("ERROR: no es un comando");
 	}
 	return (0);
 }

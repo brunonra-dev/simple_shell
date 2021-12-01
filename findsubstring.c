@@ -11,19 +11,10 @@
 char *findsubstring(char **string, char *needle)
 {
 	int i, j, h, count, n_len;
-	char *ret = '\0', *space = "\n";
+	char *ret = NULL;
 
 	i = j = h = 0;
 	count = n_len = 0;
-
-	for (h = 0; string[h]; h++)
-	{
-		for (i = 0; string[h][i] != '\0'; i++)
-		{
-			write(2, &string[h][i], 1);
-		}
-		write(2, space, 1);
-	}
 
 	while (needle[n_len] != '\0')
 		n_len++;
@@ -54,10 +45,12 @@ char *findsubstring(char **string, char *needle)
 }
 
 /**
-*
-*
-*
-*/
+ * getpath - getpath
+ *
+ * @path: string
+ *
+ * Return: pointer to path
+ */
 char **getpath(char **path)
 {
 	char *pathcp[1024], *token, *final[1024];
@@ -83,5 +76,6 @@ char **getpath(char **path)
 	}
 	final[i] = token;
 	path = final;
+
 	return (path);
 }

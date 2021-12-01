@@ -24,9 +24,14 @@ typedef struct list_s
 } path_t;
 
 /* Prototypes */
+int _putchar(char c);
+int _strcmp(char *s1, char *s2);
 int subprocess(char *buffer[], char *string);
 char *findsubstring(char **string, char *needle);
-/*char **getpath(char **path);
-size_t getpath(path_t *head);*/
+char **getpath(char **path);
+
+/* Prototypes Built-in*/
+int get_builtin(char *token, va_list args);
+void _printenv(char **env);
 
 #endif
