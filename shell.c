@@ -16,10 +16,11 @@ int main(int ac, char **va, char **env)
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
+	char *path, *path2;
 	(void)ac, (void)va;
 
-	if (findsubstring(env, "PATH="))
-		printf("path encontrado\n");
+	path = findsubstring(env, "PATH=");
+	path2 = *getpath(&path);
 
 	while (1)
 	{

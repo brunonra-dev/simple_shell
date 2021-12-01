@@ -43,3 +43,36 @@ char *findsubstring(char **string, char *needle)
 	}
 	return (ret);
 }
+
+/**
+*
+*
+*
+*/
+char **getpath(char **path)
+{
+	char *pathcp = *path, *token;
+	const char *del = ":";
+	int i;
+
+	printf("soypathcp %s\n", pathcp);
+	i = 0;
+	token = strtok(pathcp, "=");
+	while (token)
+	{
+		path[i] = token;
+		token = strtok(NULL, "=");
+		i++;
+	}
+	path[i] = token;
+	i = 0;
+	token = strtok(pathcp, del);
+	while (token)
+	{
+		path[i] = token;
+		token = strtok(NULL, del);
+		i++;
+	}
+	path[i] = token;
+	return (path);
+}
