@@ -34,6 +34,5 @@ int subprocess(char *buffer[], char *string)
 	{
 		wait(&status);
 	}
-
 	return (0);
 }

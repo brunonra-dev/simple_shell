@@ -27,7 +27,7 @@ void _printenv(char **env)
  * @string: string to free
  */
 
-void _exit(char *string)
+void _exitshell(char *string)
 {
 	free(string);
 	exit(0);

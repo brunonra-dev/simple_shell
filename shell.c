@@ -16,7 +16,8 @@ int main(int ac, char **va, char **env)
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
-	(void)ac, (void)va;
+	char **path = _getpath(env, "PATH");
+	(void)ac, (void)va, (void)path;
 
 	while (1)
 	{
@@ -41,6 +42,8 @@ int main(int ac, char **va, char **env)
 
 		if (!(_strcmp(buffer[0], "env")))
 			_printenv(env);
+		else if (!(_strcmp(buffer[0], "exit")))
+			_exitshell(string);
 		else if (subprocess(buffer, string))
 			continue;
 		else

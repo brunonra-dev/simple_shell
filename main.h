@@ -9,29 +9,30 @@
 #include <sys/types.h>
 
 /**
- * struct list_s - singly linked list
- * 
- * @str: string - (malloc'ed string)
- * @next: points to the next node
+ * struct path_s - linked list path
+ *
+ * @path: path env
+ * @next: points to the next path
  *
  * Description: singly linked list node structure
  */
 
-typedef struct list_s
+typedef struct path_s
 {
-    char *str;
-    struct list_s *next;
+	char *path;
+	struct path_s *next;
 } path_t;
 
 /* Prototypes */
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
+char *_strdup(char *str);
+path_t *add_node_end(path_t **head, const char *str);
 int subprocess(char *buffer[], char *string);
-char *findsubstring(char **string, char *needle);
-char **getpath(char **path);
+char **_getpath(char **env, char *path);
 
 /* Prototypes Built-in*/
-int get_builtin(char *token, va_list args);
 void _printenv(char **env);
+void _exitshell(char *string);
 
 #endif

@@ -1,14 +1,15 @@
 #include "main.h"
+char **token_path(char **path);
 /**
- * findsubstring - locates a substring.
+ * _getpath - locates path on enviroment.
  *
- * @string: string.
- * @needle: characters to match.
+ * @env: enviroment.
+ * @path: string to match.
  *
  * Return: a pointer to the beginning of the located substring,
  * or NULL if the character is not found.
  */
-char *findsubstring(char **string, char *needle)
+char **_getpath(char **env, char *path)
 {
 	int i, j, h, count, n_len;
 	char *ret = NULL;
@@ -16,42 +17,42 @@ char *findsubstring(char **string, char *needle)
 	i = j = h = 0;
 	count = n_len = 0;
 
-	while (needle[n_len] != '\0')
+	while (path[n_len] != '\0')
 		n_len++;
 
-	for (h = 0; string[h]; h++)
+	for (h = 0; env[h]; h++)
 	{
-		for (i = 0; string[h][i] != '\0'; i++)
+		for (i = 0; env[h][i] != '\0'; i++)
 		{
 			count = 0;
-			if (string[h][i] == needle[0])
+			if (env[h][i] == path[0])
 			{
-				for (j = 0; needle[j] != '\0'; j++)
+				for (j = 0; path[j] != '\0'; j++)
 				{
-					if (string[h][i + j] == needle[j])
+					if (env[h][i + j] == path[j])
 					{
 						count++;
 					}
 				}
 				if (count == n_len)
 				{
-					ret = &string[h][i];
+					ret = &env[h][i];
 					break;
 				}
 			}
 		}
 	}
-	return (ret);
+	return (token_path(&ret));
 }
 
 /**
- * getpath - getpath
+ * token_path - tokenizer path
  *
- * @path: string
+ * @path: string path
  *
- * Return: pointer to path
+ * Return: pointer to string 2d path
  */
-char **getpath(char **path)
+char **token_path(char **path)
 {
 	char *pathcp[1024], *token, *final[1024];
 	const char *del = ":";
