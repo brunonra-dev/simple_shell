@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * main - Shell.
  *
@@ -9,14 +8,13 @@
  *
  * Return: 0 on success
  */
-
 int main(int ac, char **va, char **env)
 {
 	int bytes_read, i;
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
-	char **path = _getpath(env, "PATH");
+	char *path = _getpath(env, "PATH");
 	(void)ac, (void)va, (void)path;
 
 	while (1)

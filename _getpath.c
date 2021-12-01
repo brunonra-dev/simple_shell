@@ -9,7 +9,7 @@ char **token_path(char **path);
  * Return: a pointer to the beginning of the located substring,
  * or NULL if the character is not found.
  */
-char **_getpath(char **env, char *path)
+char *_getpath(char **env, char *path)
 {
 	int i, j, h, count, n_len;
 	char *ret = NULL;
@@ -42,7 +42,8 @@ char **_getpath(char **env, char *path)
 			}
 		}
 	}
-	return (token_path(&ret));
+	token_path(&ret);
+	return (ret);
 }
 
 /**
@@ -54,6 +55,7 @@ char **_getpath(char **env, char *path)
  */
 char **token_path(char **path)
 {
+	path_t **head = NULL;
 	char *pathcp[1024], *token, *final[1024];
 	const char *del = ":";
 	int i;
@@ -71,7 +73,7 @@ char **token_path(char **path)
 	token = strtok(*pathcp, del);
 	while (token)
 	{
-		final[i] = token;
+		add_node_end(head, token);
 		token = strtok(NULL, del);
 		i++;
 	}

@@ -29,7 +29,7 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 path_t *add_node_end(path_t **head, const char *str);
 int subprocess(char *buffer[], char *string);
-char **_getpath(char **env, char *path);
+char *_getpath(char **env, char *path);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);
