@@ -26,7 +26,7 @@ int subprocess(char *buffer[], char *string)
 		{
 			perror("ERROR: execve");
 			free(string);
-			return (-1);
+			exit(0);
 		}
 		free(string);
 	}
@@ -34,5 +34,5 @@ int subprocess(char *buffer[], char *string)
 	{
 		wait(&status);
 	}
-	return (0);
+	return (1);
 }

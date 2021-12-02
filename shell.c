@@ -10,16 +10,17 @@
  */
 int main(int ac, char **va, char **env)
 {
-	int bytes_read, i;
+	int bytes_read, i, isa = 1;
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024];
 	const char *d = " \n";
-	char *path = _getpath(env, "PATH");
-	(void)ac, (void)va, (void)path;
+	(void)ac, (void)va;
 
-	while (1)
-	{
-		printf("$ ");
+	isa = isatty(STDIN_FILENO);
+	do {
+		if (isa)
+			printf("$ ");
+
 		bytes_read = getline(&string, &size, stdin);
 		if (bytes_read == -1)
 		{
@@ -38,14 +39,15 @@ int main(int ac, char **va, char **env)
 		}
 		buffer[i] = token;
 
-		if (!(_strcmp(buffer[0], "env")))
-			_printenv(env);
-		else if (!(_strcmp(buffer[0], "exit")))
-			_exitshell(string);
-		else if (subprocess(buffer, string))
+		if (buffer[0] == NULL) /**space and new line*/
 			continue;
-		else
-			perror("ERROR: no es un comando");
-	}
+		if (check(buffer, env, string))
+			continue;
+		else if ((subprocess(buffer, string)))
+		{
+			printf("entree\n");
+			continue;
+		}
+	} while (isa);
 	return (0);
 }
