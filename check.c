@@ -1,5 +1,4 @@
 #include "main.h"
-int ruta(char **buffer, char *string);
 /**
  *
  *
@@ -40,10 +39,10 @@ int ruta(char **buffer, char *string)
 	{
 		if (buffer[0][i] == '/')
 		{
-			printf("holaaaa");
-			/*ret = subprocess(buffer, string);*/
+			ret = subprocess(buffer, string);
 			break;
 		}
+		i++;
 	}
 	return (ret);
 }

@@ -31,6 +31,7 @@ int check(char **buffer, char **env, char *string);
 path_t *add_node_end(path_t **head, const char *str);
 int subprocess(char *buffer[], char *string);
 char *_getpath(char **env, char *path);
+int ruta(char **buffer, char *string);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);

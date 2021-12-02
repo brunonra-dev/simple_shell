@@ -16,12 +16,12 @@ int main(int ac, char **va, char **env)
 	const char *d = " \n";
 	(void)ac, (void)va;
 
-	isa = isatty(STDIN_FILENO);
+	isa = isatty(STDIN_FILENO); /*verifica si es INTERACTIV/NON-INTERACTIV*/
 	do {
 		if (isa)
 			printf("$ ");
 
-		bytes_read = getline(&string, &size, stdin);
+		bytes_read = getline(&string, &size, stdin); /*paste stdin in string*/
 		if (bytes_read == -1)
 		{
 			perror("ERROR: getline");
@@ -30,7 +30,7 @@ int main(int ac, char **va, char **env)
 
 		/* tokenizer */
 		i = 0;
-		token = strtok(string, d);
+		token = strtok(string, d); /*separa string por delimitador*/
 		while (token)
 		{
 			buffer[i] = token;
