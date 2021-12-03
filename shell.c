@@ -42,7 +42,11 @@ int main(int ac, char **va, char **env)
 		if (buffer[0] == NULL) /**space and new line*/
 			continue;
 		if (check(buffer, env, string, head))
+		{
+			printf("Buffer: %s", *buffer);
+
 			continue;
+		}
 		else
 		{
 			rutecheck(head, buffer, string);
