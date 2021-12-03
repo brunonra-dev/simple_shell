@@ -21,9 +21,9 @@ int rutecheck(path_t *head, char **buffer, char *string)
 			i++;
 		if (aux[i - 1] != '/')
 			dest = _strcat(aux, "/");
-		free(aux);
 
 		dest = _strcat(dest, buffer[0]);
+		/**LIBERAR AUx*/
 
 		if (!stat(dest, &st))
 		{

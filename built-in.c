@@ -29,7 +29,6 @@ void _printenv(char **env)
 
 void _exitshell(char *string)
 {
-
 	free(string);
 	exit(0);
 }
