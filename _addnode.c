@@ -9,7 +9,7 @@
  * Return: 0;
  */
 
-path_t *add_node_end(path_t **head, const char *str)
+path_t *add_node_end(path_t **head, char *str)
 {
 	path_t *node, *tmp;
 
@@ -26,7 +26,7 @@ path_t *add_node_end(path_t **head, const char *str)
 		return (NULL);
 	}
 
-	node->path = strdup(str);
+	node->path = _strdup(str);
 	node->next = NULL;
 
 	if (*head == NULL)

@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 
 /**
  * struct path_s - linked list path
@@ -27,11 +28,13 @@ typedef struct path_s
 int _putchar(char c);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
-int check(char **buffer, char **env, char *string);
-path_t *add_node_end(path_t **head, const char *str);
+int check(char **buffer, char **env, char *string, path_t *head);
+path_t *add_node_end(path_t **head, char *str);
 int subprocess(char *buffer[], char *string);
-char *_getpath(char **env, char *path);
+path_t *_getpath(char **env, char *path);
+int rutecheck(path_t *head, char **buffer, char *string);
 int ruta(char **buffer, char *string);
+void free_list(path_t *head);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);

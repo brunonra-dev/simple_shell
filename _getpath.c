@@ -1,5 +1,5 @@
 #include "main.h"
-char **token_path(char **path);
+path_t *token_path(char *path);
 /**
  * _getpath - locates path on enviroment.
  *
@@ -9,10 +9,11 @@ char **token_path(char **path);
  * Return: a pointer to the beginning of the located substring,
  * or NULL if the character is not found.
  */
-char *_getpath(char **env, char *path)
+path_t *_getpath(char **env, char *path)
 {
 	int i, j, h, count, n_len;
-	char *ret = NULL;
+	char *ret = NULL, *buffer;
+	path_t *head = NULL;
 
 	i = j = h = 0;
 	count = n_len = 0;
@@ -42,8 +43,10 @@ char *_getpath(char **env, char *path)
 			}
 		}
 	}
-	token_path(&ret);
-	return (ret);
+	buffer = _strdup(ret);
+	head = token_path(buffer);
+	free(buffer);
+	return (head);
 }
 
 /**
@@ -53,32 +56,32 @@ char *_getpath(char **env, char *path)
  *
  * Return: pointer to string 2d path
  */
-char **token_path(char **path)
+path_t *token_path(char *path)
 {
-	path_t **head = NULL;
+	path_t *head = NULL;
 	char *pathcp[1024], *token, *final[1024];
 	const char *del = ":";
 	int i;
 
 	i = 0;
-	token = strtok(*path, "PATH=");
+	token = strtok(path, "PATH=");
 	while (token)
 	{
 		pathcp[i] = token;
 		token = strtok(NULL, "=");
 		i++;
 	}
-	pathcp[i] = token;
+	pathcp[i] = NULL;
 	i = 0;
 	token = strtok(*pathcp, del);
 	while (token)
 	{
-		add_node_end(head, token);
+		final[i] = token;
+		add_node_end(&head, token);
 		token = strtok(NULL, del);
 		i++;
 	}
-	final[i] = token;
-	path = final;
+	final[i] = NULL;
 
-	return (path);
+	return (head);
 }

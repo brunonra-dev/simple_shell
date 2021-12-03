@@ -4,7 +4,7 @@
  *
  *
  */
-int check(char **buffer, char **env, char *string)
+int check(char **buffer, char **env, char *string, path_t *head)
 {
 	int c = 0, ret = 0;
 
@@ -19,6 +19,7 @@ int check(char **buffer, char **env, char *string)
 		_printenv(env);
 		return (1);
 	case 2:
+		free_list(head);
 		_exitshell(string);
 		return (1);
 	default:

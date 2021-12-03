@@ -29,6 +29,23 @@ void _printenv(char **env)
 
 void _exitshell(char *string)
 {
+
 	free(string);
 	exit(0);
+}
+
+/**
+ * free_list - free linked list
+ *
+ * @head: pointer to list_t
+ */
+
+void free_list(path_t *head)
+{
+	while (head)
+	{
+		free(head->path);
+		free(head);
+		head = head->next;
+	}
 }
