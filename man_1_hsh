@@ -1,0 +1,53 @@
+.\" Manpage for hsh
+.TH hsh (3) "12/04/2021" "1.0" "hsh Programmer's Manual"
+
+.SH NAME
+
+hsh
+
+.SH SYNOPSIS
+
+.B #include "main.h"
+.PP
+
+.B echo "ls" | ./hsh
+.B ...)
+
+.SH DESCRIPTION
+
+.PP
+
+hsh is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
+
+.SH OPTIONS
+
+.RS
+.nf
+- env -  Prints enviroment.
+- exit -  Exit hsh.
+- ./ -  Execute files from dir.
+- Command - Execute all programs in linux "ls", "echo", etc.
+.RE
+
+.SH EXAMPLES
+
+.PP
+echo "ls" | ./hsh
+.PP
+Output: show all the files on the working directory
+.PP
+echo "./test" | ./hsh
+.PP
+ Output: Execute test file from working directory
+.PP
+echo "env" | ./hsh
+.PP
+Output: Print Enviroment
+
+.B Return value
+
+On success, hsh returns 0. On error returns -1
+
+.SH AUTHORS
+
+Bruno Rodriguez, Matias Lopez
