@@ -24,9 +24,9 @@ int subprocess(char *buffer[], char *string)
 		ex = execve(buffer[0], buffer, NULL);
 		if (ex == -1)
 		{
-			perror("ERROR: execve");
+			perror("ERROR:");
 			free(string);
-			exit(0);
+			return (0);
 		}
 		free(string);
 	}

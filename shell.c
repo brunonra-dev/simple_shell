@@ -11,7 +11,7 @@
 int main(int ac, char **va, char **env)
 {
 	int bytes_read, i, isa = 1;
-	size_t size = 0;
+	size_t size = 10;
 	char *string = NULL, *token, *buffer[1024], *path = "PATH=";
 	const char *d = " \n";
 	path_t *head = NULL;
@@ -41,15 +41,14 @@ int main(int ac, char **va, char **env)
 
 		if (buffer[0] == NULL) /**space and new line*/
 			continue;
-		if (check(buffer, env, string, head))
+		if (check(buffer, env, string, head)) /*check if is built-in or no*/
 		{
-			printf("Buffer: %s", *buffer);
-
 			continue;
 		}
 		else
 		{
-			rutecheck(head, buffer, string);
+			rutecheck(head, buffer, string); /**si el comando no tiene / se le agrega y
+		se corrobora la existencia d ela ruta, si exite se ejecuta**/
 		}
 	} while (isa);
 	return (0);

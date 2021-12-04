@@ -59,7 +59,7 @@ path_t *_getpath(char **env, char *path)
 path_t *token_path(char *path)
 {
 	path_t *head = NULL;
-	char *pathcp[1024], *token, *final[1024];
+	char *pathcp[1024], *token;
 	const char *del = ":";
 	int i;
 
@@ -76,12 +76,10 @@ path_t *token_path(char *path)
 	token = strtok(*pathcp, del);
 	while (token)
 	{
-		final[i] = token;
 		add_node_end(&head, token);
 		token = strtok(NULL, del);
 		i++;
 	}
-	final[i] = NULL;
 
 	return (head);
 }
