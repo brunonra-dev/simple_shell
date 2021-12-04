@@ -13,6 +13,7 @@ path_t *_getpath(char **env, char *path)
 {
 	int i, j, h, count, n_len;
 	char *ret = NULL, *buffer;
+	path_t *head = NULL;
 
 	i = j = h = 0;
 	count = n_len = 0;
@@ -43,7 +44,9 @@ path_t *_getpath(char **env, char *path)
 		}
 	}
 	buffer = _strdup(ret);
-	return (token_path(buffer));
+	head = token_path(buffer);
+	free(buffer);
+	return (head);
 }
 
 /**

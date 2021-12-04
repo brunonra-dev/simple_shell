@@ -13,19 +13,16 @@ int check(char **buffer, char **env, char *string, path_t *head)
 	if (!(_strcmp(buffer[0], "exit")))
 		c = 2;
 
-			printf("Buffercheeck: %s\n", buffer[0]);
-			printf("CCCC %i\n", c);
-
 	switch (c)
 	{
 	case 1:
 		_printenv(env);
 		return (1);
 	case 2:
-		/**NO FUNCA CON DOS FUNCIONES ACA ADENTRO*/
 		free_list(head);
 		_exitshell(string);
 		return (1);
+
 	default:
 		ret = ruta(buffer, string);
 	}

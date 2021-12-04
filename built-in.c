@@ -41,10 +41,13 @@ void _exitshell(char *string)
 
 void free_list(path_t *head)
 {
+	path_t *buffer;
+
 	while (head)
 	{
+		buffer = head->next;
 		free(head->path);
 		free(head);
-		head = head->next;
+		head = buffer;
 	}
 }
