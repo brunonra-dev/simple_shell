@@ -15,7 +15,7 @@ Bash is an sh-compatible command language interpreter that executes commands rea
 - Wall -Werror -Wextra -pedantic -std=gnu89
 - Style guidelines: [Betty style](https://github.com/holbertonschool/Betty/wiki)
 
-##Built-in Commands
+## Built-in Commands
 
 | Command    | Output          |
 |------------|-----------------|
@@ -28,7 +28,12 @@ To install execute in terminal
 
 ## Compilation
 
-``gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c``
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
+
+## Valgrind debug
+
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -g *.c`
+`valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./hsh`
 
 # Flowchart
 
