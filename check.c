@@ -44,13 +44,15 @@ int check(char **buffer, char **env, char *string, path_t *head)
 
 int route(char **buffer, char *string)
 {
+	struct stat st;
 	int i = 0, ret = 0;
 
 	while (buffer[0][i])
 	{
 		if (buffer[0][i] == '/')
 		{
-			ret = subprocess(buffer, string);
+			if (!stat(buffer[0], &st)) /*check if route and file exist*/
+				ret = subprocess(buffer, string);
 			break;
 		}
 		i++;
