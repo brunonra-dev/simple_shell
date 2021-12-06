@@ -1,11 +1,13 @@
 #include "main.h"
 /**
- *check - compara built-in para ejecutar
- *@buffer: stdin tokenizado
+ *check - check if is a built-in or a route
+ *
+ *@buffer: stdin tokenized
  *@env: enviroment
- *@string: stdin
- *@path_t: pointer to struct
- *Return: ni idea
+ *@string: user input
+ *@head: pointer to path linked list
+ *
+ *Return: 1 on success or 0 on error
  */
 int check(char **buffer, char **env, char *string, path_t *head)
 {
@@ -27,16 +29,20 @@ int check(char **buffer, char **env, char *string, path_t *head)
 		return (1);
 
 	default:
-		ret = ruta(buffer, string);
+		ret = route(buffer, string);
 	}
 	return (ret);
 }
 /**
+ * route - check if is a route and execute
  *
+ * @buffer: stdin tokenized
+ * @string: user input
  *
+ * Return: 1 on success or 0 on error
  */
 
-int ruta(char **buffer, char *string)
+int route(char **buffer, char *string)
 {
 	int i = 0, ret = 0;
 

@@ -1,11 +1,9 @@
 #include "main.h"
-
 /**
- * _printenv - show enviroment
+ * _printenv - print on screen the enviroment
  *
- * @env: env array
+ * @env: enviroment
  */
-
 void _printenv(char **env)
 {
 	int h, i;
@@ -22,7 +20,7 @@ void _printenv(char **env)
 }
 
 /**
- * _exit - exit shell
+ * _exitshell - exit shell and free string
  *
  * @string: string to free
  */
@@ -36,9 +34,8 @@ void _exitshell(char *string)
 /**
  * free_list - free linked list
  *
- * @head: pointer to list_t
+ * @head: pointer to begining linked list
  */
-
 void free_list(path_t *head)
 {
 	path_t *buffer;

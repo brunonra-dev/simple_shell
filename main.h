@@ -31,10 +31,13 @@ char *_strdup(char *str);
 int check(char **buffer, char **env, char *string, path_t *head);
 path_t *add_node_end(path_t **head, char *str);
 int subprocess(char *buffer[], char *string);
-path_t *_getpath(char **env, char *path);
-int rutecheck(path_t *head, char **buffer, char *string);
-int ruta(char **buffer, char *string);
+path_t *llpath(char **env, char *path);
+int commandex(path_t *head, char **buffer, char *string);
+int route(char **buffer, char *string);
 void free_list(path_t *head);
+char *str_concat(char *s1, char *s2);
+void freeisa(path_t *head, char *string);
+path_t *token_path(char *path);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);

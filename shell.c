@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * main - Shell.
+ * main - Pseudo-Shell, main function
  *
  * @ac: agrument count
  * @va: arguments
@@ -13,16 +13,16 @@ int main(int ac, char **va, char **env)
 	int bytes_read = 0, i = 0, isa = 1;
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024], *path = "PATH=";
-	const char *d = " \n";
+	const char *d = " \n\t";
 	path_t *head = NULL;
 	(void)ac, (void)va;
 
-	head = _getpath(env, path);/*crea linked list*/
-	isa = isatty(STDIN_FILENO); /*verifica si es INTERACTIV/NON-INTERACTIV*/
+	head = llpath(env, path);/*create linked list*/
+	isa = isatty(STDIN_FILENO); /*INTERACTIVE/NON-INTERACTIVE*/
 	do {
 		if (isa)
 			printf("$ ");
-		bytes_read = getline(&string, &size, stdin); /*paste stdin in string*/
+		bytes_read = getline(&string, &size, stdin);
 		if (bytes_read == -1)
 		{
 			perror("ERROR: getline");
@@ -30,26 +30,23 @@ int main(int ac, char **va, char **env)
 		}
 		/* tokenizer */
 		i = 0;
-		token = strtok(string, d); /*separa string por delimitador*/
+		token = strtok(string, d);
 		while (token)
 		{
 			buffer[i] = token;
 			token = strtok(NULL, d);
 			i++;
 		}
-		buffer[i] = token;
+		buffer[i] = NULL;
 
-		if (buffer[0] == NULL) /**space and new line*/
+		if (buffer[0] == NULL) /**space, tab and new line*/
 			continue;
 		if (check(buffer, env, string, head)) /*check if is built-in or no*/
-		{
 			continue;
-		}
 		else
-		{
-			rutecheck(head, buffer, string); /**si el comando no tiene / se le agrega y
-		se corrobora la existencia d ela ruta, si exite se ejecuta**/
-		}
+			commandex(head, buffer, string);
 	} while (isa);
+	if (!isa)
+		freeisa(head, string); /*free NON-INTERACTIVE*/
 	return (0);
 }

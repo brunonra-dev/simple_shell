@@ -1,14 +1,12 @@
 #include "main.h"
-
 /**
- * subprocess - create a child process.
+ * subprocess - create a child process and execute command
  *
  * @buffer: tokenized string
  * @string: string getline
  *
- * Return: 0 on Success.
+ * Return: 1 on Success or 0 on error
  */
-
 int subprocess(char *buffer[], char *string)
 {
 	pid_t child_pid;

@@ -1,15 +1,13 @@
 #include "main.h"
-path_t *token_path(char *path);
 /**
- * _getpath - locates path on enviroment.
+ * llpath - locates path on enviroment
  *
  * @env: enviroment.
  * @path: string to match.
  *
- * Return: a pointer to the beginning of the located substring,
- * or NULL if the character is not found.
+ * Return: a pointer to head of linked list or null on error
  */
-path_t *_getpath(char **env, char *path)
+path_t *llpath(char **env, char *path)
 {
 	int i, j, h, count, n_len;
 	char *ret = NULL, *buffer;
@@ -43,18 +41,18 @@ path_t *_getpath(char **env, char *path)
 			}
 		}
 	}
-	buffer = _strdup(ret);
+	buffer = _strdup(ret); /*copy string from enviroment*/
 	head = token_path(buffer);
 	free(buffer);
 	return (head);
 }
 
 /**
- * token_path - tokenizer path
+ * token_path - tokenizer path and create linked list
  *
  * @path: string path
  *
- * Return: pointer to string 2d path
+ * Return: pointer to head
  */
 path_t *token_path(char *path)
 {
@@ -76,7 +74,7 @@ path_t *token_path(char *path)
 	token = strtok(*pathcp, del);
 	while (token)
 	{
-		add_node_end(&head, token);
+		add_node_end(&head, token); /*for each token create a new nodo*/
 		token = strtok(NULL, del);
 		i++;
 	}

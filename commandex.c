@@ -1,30 +1,35 @@
 #include "main.h"
-char *str_concat(char *s1, char *s2);
 /**
+ * commandex - Find command and execute
  *
+ * @head: Pointer to path linked list
+ * @buffer: Tokenized string
+ * @string: User imput
  *
- *
- *
- *
+ * Return: 0 on success or -1 on error
  */
-int rutecheck(path_t *head, char **buffer, char *string)
+int commandex(path_t *head, char **buffer, char *string)
 {
 	struct stat st;
-	int flag = 0;
+	int flag = 0, i = 0;
 	path_t *h = head;
 	char *fullpath = NULL, *path = NULL, *slash = "/", *pathslash = NULL;
 
 	while (h)
 	{
 		path = _strdup(h->path);
-		pathslash = str_concat(path, slash);
 
-		fullpath = str_concat(pathslash, buffer[0]);
+		for (i = 0; path[i]; i++)
+			;
+		if (path[i - 1] != '/') /*add slash at the end if don't exit*/
+			pathslash = str_concat(path, slash);
 
-		if (!stat(fullpath, &st))
+		fullpath = str_concat(pathslash, buffer[0]); /*add command to the path*/
+
+		if (!stat(fullpath, &st)) /*check if the file exist*/
 		{
 			buffer[0] = _strdup(fullpath);
-			subprocess(buffer, string);
+			subprocess(buffer, string); /*execute command*/
 			free(buffer[0]);
 			free(path);
 			free(fullpath);
@@ -39,7 +44,8 @@ int rutecheck(path_t *head, char **buffer, char *string)
 	}
 	if (flag == 0)
 	{
-		perror("ERROR: ");
+		perror("ERROR");
+		return (-1);
 	}
 
 	return (0);
