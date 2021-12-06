@@ -10,8 +10,8 @@
  */
 int main(int ac, char **va, char **env)
 {
-	int bytes_read, i, isa = 1;
-	size_t size = 10;
+	int bytes_read = 0, i = 0, isa = 1;
+	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024], *path = "PATH=";
 	const char *d = " \n";
 	path_t *head = NULL;

@@ -5,7 +5,7 @@
  *@env: enviroment
  *@string: stdin
  *@path_t: pointer to struct
- *Return: ni idea 
+ *Return: ni idea
  */
 int check(char **buffer, char **env, char *string, path_t *head)
 {

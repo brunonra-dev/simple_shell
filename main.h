@@ -35,6 +35,7 @@ path_t *_getpath(char **env, char *path);
 int rutecheck(path_t *head, char **buffer, char *string);
 int ruta(char **buffer, char *string);
 void free_list(path_t *head);
+int _strlen(char *s);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);

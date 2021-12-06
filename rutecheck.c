@@ -12,34 +12,33 @@ int rutecheck(path_t *head, char **buffer, char *string)
 	struct stat st;
 	int flag = 0;
 	path_t *h = head;
-	char *dest = NULL, *aux = NULL;
+	char *fullpath = NULL, *path = NULL, *slash = "/", *pathslash = NULL;
 
 	while (h)
 	{
-		aux = _strdup(h->path);
-		dest = str_concat(aux, "/");
+		path = _strdup(h->path);
+		pathslash = str_concat(path, slash);
 
-		dest = str_concat(dest, buffer[0]);
+		fullpath = str_concat(pathslash, buffer[0]);
 
-		if (!stat(dest, &st))
+		if (!stat(fullpath, &st))
 		{
-			buffer[0] = _strdup(dest);
+			buffer[0] = _strdup(fullpath);
 			subprocess(buffer, string);
 			free(buffer[0]);
-			free(aux);
-			free(dest);
+			free(path);
+			free(fullpath);
+			free(pathslash);
 			flag = 1;
 			break;
 		}
-		free(dest);
-		free(aux);
+		free(pathslash);
+		free(fullpath);
+		free(path);
 		h = h->next;
 	}
-	if (flag == 0 && stat(dest, &st))
+	if (flag == 0)
 	{
-		free(buffer[0]);
-		free(aux);
-		free(dest);
 		perror("ERROR: ");
 	}
 
