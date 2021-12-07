@@ -38,6 +38,7 @@ void free_list(path_t *head);
 char *str_concat(char *s1, char *s2);
 void freeisa(path_t *head, char *string);
 path_t *token_path(char *path);
+void ctrlD(path_t *head, char *string);
 
 /* Prototypes Built-in*/
 void _printenv(char **env);

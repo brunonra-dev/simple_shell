@@ -27,16 +27,11 @@ int main(int ac, char **va, char **env)
 		if (bytes_read == -1)
 		{
 			if (EOF == -1)
-			{
-				write(1, "exit\n", 5);
-				free_list(head);
-				_exitshell(string);
-			}
+			ctrlD(head, string);
 			perror("ERROR:");
 			return (-1);
 		}
-		/* tokenizer */
-		i = 0;
+		i = 0; /* tokenizer */
 		token = strtok(string, d);
 		while (token)
 		{

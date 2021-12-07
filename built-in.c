@@ -48,4 +48,13 @@ void free_list(path_t *head)
 		head = buffer;
 	}
 }
-void
+/**
+*
+*
+*/
+void ctrlD(path_t *head, char *string)
+{
+	write(1, "exit\n", 5);
+	free_list(head);
+	_exitshell(string);
+}
