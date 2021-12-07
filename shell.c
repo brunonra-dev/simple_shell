@@ -1,5 +1,5 @@
 #include "main.h"
-#include <errno.h>
+void sigintHandler(int n);
 /**
  * main - Pseudo-Shell main function
  *
@@ -20,9 +20,13 @@ int main(int ac, char **va, char **env)
 
 	head = llpath(env, path); /* Create linked list */
 	isa = isatty(STDIN_FILENO); /* INTERACTIVE / NON-INTERACTIVE */
+	signal(SIGINT, sigintHandler);
 	do {
 		if (isa)
-			printf("$ ");
+		{
+			_putchar('$');
+			_putchar(' ');
+		}
 		bytes_read = getline(&string, &size, stdin);
 		if (bytes_read == -1)
 		{
@@ -51,4 +55,20 @@ int main(int ac, char **va, char **env)
 	if (!isa)
 		freeisa(head, string); /* NON-INTERACTIVE free */
 	return (0);
+}
+
+/**
+ * sigintHandler - cach ctrl+c
+ *
+ * @n: int
+ */
+
+void sigintHandler(int n)
+{
+	(void)n;
+
+	signal(SIGINT, sigintHandler);
+	_putchar('\n');
+	_putchar('$');
+	_putchar(' ');
 }
