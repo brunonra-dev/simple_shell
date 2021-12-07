@@ -48,3 +48,4 @@ void free_list(path_t *head)
 		head = buffer;
 	}
 }
+void

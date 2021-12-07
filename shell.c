@@ -1,4 +1,5 @@
 #include "main.h"
+#include <errno.h>
 /**
  * main - Pseudo-Shell, main function
  *
@@ -25,7 +26,13 @@ int main(int ac, char **va, char **env)
 		bytes_read = getline(&string, &size, stdin);
 		if (bytes_read == -1)
 		{
-			perror("ERROR: getline");
+			if (EOF == -1)
+			{
+				write(1, "exit\n", 5);
+				free_list(head);
+				_exitshell(string);
+			}
+			perror("ERROR:");
 			return (-1);
 		}
 		/* tokenizer */
