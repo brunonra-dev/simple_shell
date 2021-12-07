@@ -32,8 +32,9 @@ To install execute in terminal
 
 ## Valgrind debug
 
-`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -g *.c`
-`valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./hsh`
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -g *.c -o hsh`
+
+`valgrind --tool=memcheck --leak-check=yes --track-origins=yes --show-leak-kinds=all -s ./hsh`
 
 # Flowchart
 

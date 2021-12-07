@@ -5,7 +5,7 @@
  * @buffer: tokenized string
  * @string: string getline
  *
- * Return: 1 on Success or 0 on error
+ * Return: 0 on Success or -1 on error
  */
 int subprocess(char *buffer[], char *string)
 {
@@ -14,7 +14,10 @@ int subprocess(char *buffer[], char *string)
 
 	child_pid = fork();
 	if (child_pid == -1)
-		perror("ERROR: fork");
+	{
+		perror("ERROR:");
+		return (-1);
+	}
 
 	/* subprocess execve */
 	if (child_pid == 0)
@@ -24,7 +27,7 @@ int subprocess(char *buffer[], char *string)
 		{
 			perror("ERROR:");
 			free(string);
-			return (0);
+			return (-1);
 		}
 		free(string);
 	}
@@ -32,5 +35,5 @@ int subprocess(char *buffer[], char *string)
 	{
 		wait(&status);
 	}
-	return (1);
+	return (0);
 }

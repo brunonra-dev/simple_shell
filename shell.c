@@ -1,7 +1,7 @@
 #include "main.h"
 #include <errno.h>
 /**
- * main - Pseudo-Shell, main function
+ * main - Pseudo-Shell main function
  *
  * @ac: agrument count
  * @va: arguments
@@ -11,15 +11,15 @@
  */
 int main(int ac, char **va, char **env)
 {
-	int bytes_read = 0, i = 0, isa = 1;
+	int bytes_read = 0, i = 0, isa = 1, checkret;
 	size_t size = 0;
 	char *string = NULL, *token, *buffer[1024], *path = "PATH=";
 	const char *d = " \n\t";
 	path_t *head = NULL;
 	(void)ac, (void)va;
 
-	head = llpath(env, path);/*create linked list*/
-	isa = isatty(STDIN_FILENO); /*INTERACTIVE/NON-INTERACTIVE*/
+	head = llpath(env, path); /* Create linked list */
+	isa = isatty(STDIN_FILENO); /* INTERACTIVE / NON-INTERACTIVE */
 	do {
 		if (isa)
 			printf("$ ");
@@ -27,28 +27,28 @@ int main(int ac, char **va, char **env)
 		if (bytes_read == -1)
 		{
 			if (EOF == -1)
-			ctrlD(head, string);
+				ctrlD(head, string);
 			perror("ERROR:");
 			return (-1);
 		}
-		i = 0; /* tokenizer */
+		/* Tokenizer */
 		token = strtok(string, d);
-		while (token)
+		for (i = 0; token; i++)
 		{
 			buffer[i] = token;
 			token = strtok(NULL, d);
-			i++;
 		}
 		buffer[i] = NULL;
 
 		if (buffer[0] == NULL) /**space, tab and new line*/
 			continue;
-		if (check(buffer, env, string, head)) /*check if is built-in or no*/
+		/* check if it's built-in or route */
+		checkret = check(va, buffer, env, string, head);
+		if (checkret == 0 || checkret == -4 || checkret == -2)
 			continue;
-		else
-			commandex(head, buffer, string);
+		commandex(head, buffer, string, va);
 	} while (isa);
 	if (!isa)
-		freeisa(head, string); /*free NON-INTERACTIVE*/
+		freeisa(head, string); /* NON-INTERACTIVE free */
 	return (0);
 }

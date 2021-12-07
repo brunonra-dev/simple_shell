@@ -5,10 +5,11 @@
  * @head: Pointer to path linked list
  * @buffer: Tokenized string
  * @string: User imput
+ * @va: arguments
  *
  * Return: 0 on success or -1 on error
  */
-int commandex(path_t *head, char **buffer, char *string)
+int commandex(path_t *head, char **buffer, char *string, char **va)
 {
 	struct stat st;
 	int flag = 0, i = 0;
@@ -44,7 +45,7 @@ int commandex(path_t *head, char **buffer, char *string)
 	}
 	if (flag == 0)
 	{
-		perror("ERROR");
+		error(va, buffer, -3);
 		return (-1);
 	}
 
