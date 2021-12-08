@@ -49,9 +49,11 @@ void free_list(path_t *head)
 	}
 }
 /**
-*
-*
-*/
+ * ctrlD - exit on ctrl+d
+ *
+ * @head: pointer to path linked list
+ * @string: user input
+ */
 void ctrlD(path_t *head, char *string)
 {
 	write(1, "exit\n", 5);
