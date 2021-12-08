@@ -38,9 +38,12 @@ path_t *llpath(char **env, char *path)
 					ret = &env[h][i];
 					break;
 				}
+				else
+					ret = "PATH=";
 			}
 		}
 	}
+
 	buffer = _strdup(ret); /*copy string from enviroment*/
 	head = token_path(buffer);
 	free(buffer);
