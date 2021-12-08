@@ -38,6 +38,6 @@ To install execute in terminal
 
 # Flowchart
 
-![Flowchart](https://raw.githubusercontent.com/brunonra-dev/simple_shell/main/flowchartnew.png)
+![Flowchart](https://raw.githubusercontent.com/brunonra-dev/simple_shell/main/flowchartnew2.png)
 
 Created by [Bruno Rodríguez](https://github.com/brunonra-dev/) & [Matias López](https://github.com/Matilop15)
