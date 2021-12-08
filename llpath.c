@@ -35,7 +35,7 @@ path_t *llpath(char **env, char *path)
 				}
 				if (count == n_len)
 				{
-					ret = &env[h][i];
+					ret = &env[h][0];
 					break;
 				}
 			}
