@@ -1,6 +1,6 @@
 # simple_shell
 
-Hello, welcome to our first group project, we're replicating the shell Linux
+Hello, welcome to our second group project, we're replicating the shell Linux
 
 ### version 1.0
 

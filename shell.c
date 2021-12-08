@@ -16,7 +16,7 @@ int main(int ac, char **va, char **env)
 	char *string = NULL, *token, *buffer[1024], *path = "PATH=";
 	const char *d = " \n\t";
 	path_t *head = NULL;
-	(void)ac, (void)va;
+	(void)ac;
 
 	head = llpath(env, path); /* Create linked list */
 	isa = isatty(STDIN_FILENO); /* INTERACTIVE / NON-INTERACTIVE */
