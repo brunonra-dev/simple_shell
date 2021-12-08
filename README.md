@@ -38,19 +38,28 @@ To install execute in terminal
 
 ## Examples:
 
+Input: 
 `$ ls`
 
+Output:
+
 `AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
 README.md   _strcmp.c   built-in.c  error.c            llpath.c   prueba
 _addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c`
 
+Input:
 `$ /bin/ls`
 
+Output:
+
 `AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
 README.md   _strcmp.c   built-in.c  error.c            llpath.c   prueba
 _addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c`
 
+Input:
 `$ env`
+
+Output:
 
 `HOSTNAME=83f864a25fd0
 LANGUAGE=en_US:en
