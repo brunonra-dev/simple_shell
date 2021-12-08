@@ -7,12 +7,13 @@
 void _printenv(char **env)
 {
 	int h, i;
+	(void)(env);
 
-	for (h = 0; env[h]; h++)
+	for (h = 0; environ[h]; h++)
 	{
-		for (i = 0; env[h][i] != '\0'; i++)
+		for (i = 0; environ[h][i] != '\0'; i++)
 		{
-			_putchar(env[h][i]);
+			_putchar(environ[h][i]);
 		}
 		_putchar('\n');
 	}

@@ -10,6 +10,9 @@
 #include <sys/stat.h>
 #include <signal.h>
 
+
+extern char **environ;
+
 /**
  * struct path_s - linked list path
  *
