@@ -24,11 +24,11 @@ path_t *llpath(char **env, char *path)
 		for (i = 0; env[h][i] != '\0'; i++)
 		{
 			count = 0;
-			if (env[h][i] == path[0])
+			if (env[h][0] == path[0])
 			{
 				for (j = 0; path[j] != '\0'; j++)
 				{
-					if (env[h][i + j] == path[j])
+					if (env[h][j] == path[j])
 					{
 						count++;
 					}
