@@ -13,10 +13,11 @@
 int check(char **va, char **buffer, char **env, char *string, path_t *head)
 {
 	int c = 0, ret = 0;
+	char *exit = "exit", *envi = "env";
 
-	if (!(_strcmp(buffer[0], "env")))
+	if (!(_strcmp(buffer[0], envi)))
 		c = 1;
-	if (!(_strcmp(buffer[0], "exit")))
+	if (!(_strcmp(buffer[0], exit)))
 		c = 2;
 
 	switch (c)
