@@ -38,8 +38,6 @@ path_t *llpath(char **env, char *path)
 					ret = &env[h][i];
 					break;
 				}
-				else
-					ret = "PATH=";
 			}
 		}
 	}
