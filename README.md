@@ -43,25 +43,30 @@ Input:
 
 Output:
 
-`AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
+```
+AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
 README.md   _strcmp.c   built-in.c  error.c            llpath.c   prueba
-_addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c`
+_addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c
+```
 
 Input:
 `$ /bin/ls`
 
 Output:
 
-`AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
+```
+AUTHORS     _putchar.c  a.out       commandex.c        freeisa.c  man_1_simple_shell  subprocess.c
 README.md   _strcmp.c   built-in.c  error.c            llpath.c   prueba
-_addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c`
+_addnode.c  _strdup.c   check.c     flowchartnew2.png  main.h     shell.c
+```
 
 Input:
 `$ env`
 
 Output:
 
-`HOSTNAME=83f864a25fd0
+```
+HOSTNAME=83f864a25fd0
 LANGUAGE=en_US:en
 PWD=/root/simple_shell
 TZ=America/Los_Angeles
@@ -75,7 +80,8 @@ SHLVL=1
 LC_ALL=en_US.UTF-8
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 _=./a.out
-OLDPWD=/root`
+OLDPWD=/root
+```
 
 # Flowchart
 
